@@ -51,7 +51,7 @@ In previous versions of React Router you had to order your routes a certain way 
 <Route path="teams/new" element={<NewTeamForm />} />
 ```
 
-But `teams/new` is a more specific match than `/teams/:teamId`, so `<Team/>` will render.
+But `teams/new` is a more specific match than `teams/:teamId`, so `<NewTeamForm/>` will render.
 
 ## Navigation
 
@@ -140,8 +140,8 @@ function App() {
   return (
     <Routes>
       <Route path="invoices" element={<Invoices />}>
-        <Route path=":invoiceId" element={<IndividualInvoice />} />
         <Route path="sent" element={<SentInvoices />} />
+        <Route path=":invoiceId" element={<Invoice />} />
       </Route>
     </Routes>
   );
@@ -152,7 +152,7 @@ This route config defined three route paths:
 
 - `"/invoices"`
 - `"/invoices/sent"`
-- `"/invoices/sent/:invoiceId"`
+- `"/invoices/:invoiceId"`
 
 When the URL is `"/invoices/sent"` the component tree will be:
 
