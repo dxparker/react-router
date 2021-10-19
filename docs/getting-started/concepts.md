@@ -41,7 +41,7 @@ Here are some words we use a lot when we talk about React Router. The rest of th
 
 - <a id="segment">**Segment**</a> - The parts of a [URL] or [path pattern] between the `/` characters. For example, "/users/123" has two segments.
 
-- <a id="path-pattern">**Path Pattern**</a> - These look like [URLs][url] but can have special characters for matching URLs to routes, like **dynamic segments** (`"/users/:userId"`) or **star segments** (`"/docs/\*"`). They aren't URLs, they're patterns that React Router will match.
+- <a id="path-pattern">**Path Pattern**</a> - These look like [URLs][url] but can have special characters for matching URLs to routes, like **dynamic segments** (`"/users/:userId"`) or **star segments** (`"/docs/*"`). They aren't URLs, they're patterns that React Router will match.
 
 - <a id="dynamic-segment">**Dynamic Segment**</a> - A [segment] of a [path pattern] that is dynamic, meaning it can match any values in the [segment]. For example the pattern `/users/:userId` will match [URL]s like `/users/123`
 
@@ -182,7 +182,7 @@ People use a lot of different terms for this part of the [URL]:
 - [URL] search params
 - query string
 
-In React Router we call it the "location search". However, location search is a serialized version of [`[URL]SearchParams`](https://developer.mozilla.org/en-US/docs/Web/API/[URL]SearchParams). So sometimes we might call it "[URL] search params" as well.
+In React Router we call it the "location search". However, location search is a serialized version of [`[URL]SearchParams`](https://developer.mozilla.org/docs/Web/API/URLSearchParams). So sometimes we might call it "[URL] search params" as well.
 
 ```js
 // given a location like this:
@@ -195,7 +195,7 @@ let location = {
 };
 
 // we can turn the location.search into [URL]SearchParams
-let params = new [URL]SearchParams(location.search);
+let params = new URL(location).searchParams();
 params.get("campaign"); // "instagram"
 params.get("popular"); // "true"
 params.toString(); // "campaign=instagram&popular=true",
@@ -205,7 +205,7 @@ When being precise, refer to the serialized string version as "search" and the p
 
 **Location Hash**
 
-Hashes in [URL]s indication a scroll position _on the current page_. Before the `window.history.pushState` API was introduced, web developers did client side routing exclusively with the hash portion of the [URL], it was the only part we could manipulate without making a new request to the server. However, today we can use it for it's designed purpose.
+Hashes in [URL]s indicate a scroll position _on the current page_. Before the `window.history.pushState` API was introduced, web developers did client side routing exclusively with the hash portion of the [URL], it was the only part we could manipulate without making a new request to the server. However, today we can use it for it's designed purpose.
 
 **Location State**
 
@@ -541,7 +541,7 @@ Let's use the `/teams/firebirds` URL as an example again. `<Routes>` will match 
 </App>
 ```
 
-Each match rendered inside the parent route's element is a really powerful abstraction. Most websites and apps share this characteristig: boxes inside of boxes inside of boxes, each with a navigation section that changes a child section of the page.
+Each match rendered inside the parent route's element is a really powerful abstraction. Most websites and apps share this characteristic: boxes inside of boxes inside of boxes, each with a navigation section that changes a child section of the page.
 
 ### Outlets
 
